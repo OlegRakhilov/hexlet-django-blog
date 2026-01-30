@@ -11,4 +11,6 @@ def index(request):
     )
 
 def about(request):
-    return render(request, "about.html")
+    tags = ['обучение', 'python', 'django']
+    # Передаем словарь (context) третьим аргументом
+    return render(request, 'about.html', {'tags': tags})
