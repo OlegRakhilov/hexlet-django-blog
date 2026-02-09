@@ -1,11 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.views import View
+from .models import Article
 
 class ArticleIndexView(View):
-    def get(self, request, tags=None, article_id=None, *args, **kwargs):
-        if tags and article_id:
-            return HttpResponse(f"Статья номер {article_id}. Тег {tags}")
+    def get(self, request, id=None, *args, **kwargs):
+        if id:
+            article = get_object_or_404(Article, id=id)
+            return render(request, 'articles/article.html', context={'article': article})
+        
         
         # Логика для обычного списка /articles/
-        return render(request, 'articles/index.html', context={'articles': []})
+        articles = Article.objects.all()
+        return render(request, 'articles/index.html', context={'articles': articles})

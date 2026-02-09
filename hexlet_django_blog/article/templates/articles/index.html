@@ -1,1 +1,14 @@
 <h1>Приложение: {{ app_name }}</h1>
+
+<h2>Список статей:</h2>
+<ul>
+    {% for article in articles %}
+        <li>
+            <strong>{{ article.title }}</strong> (автор: {{ article.author }})
+            <br>
+            <a href="/articles/{{ article.id }}/">Читать далее</a>
+        </li>
+    {% empty %}
+        <li>Статей пока нет. Попробуйте добавить их через консоль!</li>
+    {% endfor %}
+</ul>

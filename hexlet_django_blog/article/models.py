@@ -1,7 +1,11 @@
 from django.db import models
 
 class Article(models.Model):
-    name = models.CharField(max_length=200)  # название статьи
-    body = models.TextField()  # тело статьи
+    title = models.CharField(max_length=255)
+    author = models.CharField(max_length=255)
+    body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
