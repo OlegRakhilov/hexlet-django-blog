@@ -1,14 +1,14 @@
-<h1>Приложение: {{ app_name }}</h1>
+{% extends "base.html" %}
 
-<h2>Список статей:</h2>
-<ul>
+{% block content %}
+    <h1>Список статей</h1>
     {% for article in articles %}
-        <li>
-            <strong>{{ article.title }}</strong> (автор: {{ article.author }})
-            <br>
-            <a href="/articles/{{ article.id }}/">Читать далее</a>
-        </li>
-    {% empty %}
-        <li>Статей пока нет. Попробуйте добавить их через консоль!</li>
+        <h2>
+            <a href="{% url 'article_detail' id=article.id %}">
+                {{ article.title }}
+            </a>
+        </h2>
+        <div>{{ article.body|slice:":200" }}...</div>
+        <hr>
     {% endfor %}
-</ul>
+{% endblock %}

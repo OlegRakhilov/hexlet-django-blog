@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <title>{% block title %}Django на Хекслете{% endblock %}</title>
+    <meta charset="UTF-8">
+    <title>{% block title %}Hexlet Django Blog{% endblock %}</title>
 </head>
 <body>
-<div id="sidebar">
-    {% block sidebar %}
+    <!-- Навигационное меню -->
+    <nav>
         <ul>
             <li><a href="/">Главная</a></li>
-            <li><a href="/articles/">Статьи</a></li>
+            <!-- Используем имя маршрута из urls.py -->
+            <li><a href="{% url 'articles_index' %}">Статьи</a></li>
         </ul>
-    {% endblock %}
-</div>
-<div id="content">
-    {% block content %}{% endblock %}
-</div>
+    </nav>
+    <hr>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
 </body>
 </html>

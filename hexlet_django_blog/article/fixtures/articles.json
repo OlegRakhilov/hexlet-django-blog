@@ -1,0 +1,57 @@
+[
+{
+  "model": "article.article",
+  "pk": 1,
+  "fields": {
+    "title": "Знакомство с Django",
+    "author": "Admin",
+    "body": "Содержание про Знакомство с Django",
+    "created_at": "2026-02-06T13:37:39.137Z",
+    "updated_at": "2026-02-06T13:39:21.128Z"
+  }
+},
+{
+  "model": "article.article",
+  "pk": 2,
+  "fields": {
+    "title": "Настройка .env",
+    "author": "Admin",
+    "body": "Содержание про Настройка .env привет",
+    "created_at": "2026-02-06T13:49:05.824Z",
+    "updated_at": "2026-02-09T14:45:14.351Z"
+  }
+},
+{
+  "model": "article.article",
+  "pk": 3,
+  "fields": {
+    "title": "Миграции — это просто",
+    "author": "Admin",
+    "body": "Содержание про Миграции — это просто",
+    "created_at": "2026-02-06T13:49:24.346Z",
+    "updated_at": "2026-02-06T13:49:24.346Z"
+  }
+},
+{
+  "model": "article.article",
+  "pk": 4,
+  "fields": {
+    "title": "Модели и БД",
+    "author": "Admin",
+    "body": "Содержание про Модели и БД новые",
+    "created_at": "2026-02-06T13:49:38.691Z",
+    "updated_at": "2026-02-09T14:45:05.479Z"
+  }
+},
+{
+  "model": "article.article",
+  "pk": 5,
+  "fields": {
+    "title": "Финал настройки",
+    "author": "Admin",
+    "body": "Содержание про Финал настройки изменения",
+    "created_at": "2026-02-06T13:49:52.386Z",
+    "updated_at": "2026-02-09T14:44:57.648Z"
+  }
+}
+]
