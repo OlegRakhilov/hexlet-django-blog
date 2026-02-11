@@ -2,11 +2,32 @@
 
 {% block content %}
     <h1>{{ article.title }}</h1>
-    <p>Автор: {{ article.author }}</p>
+    <h1>{{ article.title }}</h1>
+    <p><i>Автор: {{ article.author }}</i></p>
     <hr>
-    <div>
-        {{ article.body }}
+    
+    <div class="article-body">
+        {{ article.body|linebreaks }}
     </div>
+
+    <hr>
+    <h3>Комментарии ({{ article.comment_set.count }}):</h3>
+    {% for comment in article.comment_set.all %}
+        <div class="comment" style="border-left: 3px solid #ccc; padding-left: 10px; margin-bottom: 10px;">
+            <p>{{ comment.content }}</p>
+        </div>
+    {% empty %}
+        <p>Комментариев пока нет. Будьте первым!</p>
+    {% endfor %}
+
+    <hr>
+    <!-- Добавляем кнопку перехода к форме -->
+    <p>
+        <a href="{% url 'articles_comment_create' article.id %}" style="background: #007bff; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px;">
+            ➕ Оставить свой комментарий
+        </a>
+    </p>
+
     <hr>
     <a href="{% url 'articles_index' %}">⬅ Назад к списку</a>
 {% endblock %}

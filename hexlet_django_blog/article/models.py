@@ -9,3 +9,7 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Comment(models.Model): # Добавьте этот класс
+    content = models.TextField()
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)

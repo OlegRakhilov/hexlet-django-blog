@@ -14,7 +14,17 @@
         </ul>
     </nav>
     <hr>
-
+    {% if messages %}
+    <ul class="messages" style="list-style: none; padding: 0;">
+        {% for message in messages %}
+            <li style="padding: 10px; margin-bottom: 10px; border-radius: 5px; 
+                       background-color: {% if message.tags == 'success' %}#d4edda{% else %}#f8d7da{% endif %}; 
+                       color: {% if message.tags == 'success' %}#155724{% else %}#721c24{% endif %};">
+                {{ message }}
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     <main>
         {% block content %}
         {% endblock %}
