@@ -2,6 +2,14 @@
 
 {% block content %}
     <h1>Список статей</h1>
+
+    <div style="margin-bottom: 20px;">
+        <a href="{% url 'articles_create' %}" style="background-color: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; display: inline-block;">
+            ➕ Создать новую статью
+        </a>
+    </div>
+    <hr>
+
     {% for article in articles %}
         <h2>
             <a href="{% url 'article_detail' id=article.id %}">
@@ -10,5 +18,7 @@
         </h2>
         <div>{{ article.body|slice:":200" }}...</div>
         <hr>
+    {% empty %}
+        <p>Статей пока нет. Будьте первым!</p>
     {% endfor %}
 {% endblock %}

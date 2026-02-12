@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Создать новую статью</h1>
+  <form action="{% url 'articles_create' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Опубликовать статью">
+  </form>
+  <hr>
+  <a href="{% url 'articles_index' %}">Отмена</a>
+{% endblock %}

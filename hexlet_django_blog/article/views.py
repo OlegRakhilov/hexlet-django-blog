@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.views import View
 from .models import Article, Comment
-from .forms import ArticleCommentForm  
+from .forms import ArticleCommentForm, ArticleForm  
 from django.contrib import messages
 
 
@@ -72,3 +72,23 @@ class ArticleCommentFormView(View):
         article = get_object_or_404(Article, id=kwargs['article_id'])
         form = ArticleCommentForm()
         return render(request, 'articles/comment_form.html', {'form': form, 'article': article})
+    
+class ArticleCreateView(View):
+    def get(self, request, *args, **kwargs):
+        # Создаем пустой экземпляр формы
+        form = ArticleForm()
+        return render(request, 'articles/create.html', {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        # Наполняем форму данными из запроса
+        form = ArticleForm(request.POST)
+        if form.is_valid():
+            # Если всё ок — сохраняем в БД
+            form.save()
+            # Добавляем сообщение об успехе
+            messages.success(request, 'Статья успешно создана!')
+            # Редирект на список всех статей
+            return redirect('articles_index')
+        
+        # Если в форме ошибки, возвращаем её пользователю (с подсветкой ошибок)
+        return render(request, 'articles/create.html', {'form': form})
