@@ -17,8 +17,12 @@
             </a>
         </h2>
         <div>{{ article.body|slice:":200" }}...</div>
-        <div style="margin-top: 10px;">
+        <div style="margin-top: 10px; display: flex; gap: 15px; align-items: center;">
         <a href="{% url 'articles_update' id=article.id %}" style="color: #007bff; text-decoration: none; margin-right: 15px;">🖉 Редактировать</a>
+        <form action="{% url 'articles_delete' id=article.id %}" method="post" style="margin: 0;">
+            {% csrf_token %}
+            <input type="submit" value="🗑 Удалить" style="background: none; border: none; color: #dc3545; cursor: pointer; padding: 0; font-family: inherit; font-size: inherit;" onclick="return confirm('Вы уверены?')">
+        </form>
         </div>
         <hr>
     {% empty %}

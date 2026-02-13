@@ -5,6 +5,7 @@ from hexlet_django_blog.article.views import (
     IndexView,
     ArticleCreateView,
     ArticleFormEditView,
+    ArticleFormDeleteView,
 )
 
 urlpatterns = [
@@ -12,6 +13,7 @@ urlpatterns = [
     path("comment/", views.ArticleCommentFormView.as_view(), name='articles_comment_create'),
     path('create/', views.ArticleCreateView.as_view(), name='articles_create'),
     path("<int:id>/edit/", ArticleFormEditView.as_view(), name="articles_update"),
+    path("<int:id>/delete/", ArticleFormDeleteView.as_view(), name="articles_delete"),
     path("<int:id>/", views.ArticleView.as_view(), name='article_detail'),
     path("<str:tags>/<int:article_id>/", views.ArticleView.as_view(), name='article'),
     path("<int:article_id>/comment/", views.ArticleCommentFormView.as_view(), name='articles_comment_create'),
